@@ -31,6 +31,8 @@ Thumbs.db
 .gradle
 build/
 /captures
+gradlew
+gradlew.bat
 
 #NDK
 obj/
