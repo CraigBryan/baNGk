@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".WelcomeActivity"
+    android:theme="@style/AppTheme.NoActionBar"
+    android:gravity="center_horizontal"
+    android:paddingRight="@dimen/welcome_side_padding"
+    android:paddingLeft="@dimen/welcome_side_padding"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/welcome_top_padding">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/welcome_title_text"
+        android:id="@+id/welcome_title"
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/welcome_card_number_label"
+            android:id="@+id/cn_label"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cn_input"
+            android:inputType="number"
+            android:layout_marginBottom="@dimen/under_input_margin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/welcome_password_label"
+            android:id="@+id/pw_label"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pw_input"
+            android:inputType="textPassword"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/welcome_help_link"
+            android:id="@+id/welcome_help_link"
+            android:layout_alignParentStart="true"
+            android:layout_alignBaseline="@+id/welcome_signin_button"
+            android:textColor="#0a1ef8"
+            android:typeface="monospace"/>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_signin_button_text"
+            android:id="@+id/welcome_signin_button"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_register_button_text"
+            android:id="@+id/welcome_register_button"
+            android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+
+</LinearLayout>
