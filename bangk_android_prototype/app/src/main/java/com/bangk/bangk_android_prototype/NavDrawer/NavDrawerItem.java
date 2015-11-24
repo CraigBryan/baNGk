@@ -1,4 +1,4 @@
-package com.bangk.bangk_android_prototype;
+package com.bangk.bangk_android_prototype.NavDrawer;
 
 /**
  * Created by craigbryan on 19/11/15.

@@ -1,4 +1,4 @@
-package com.bangk.bangk_android_prototype;
+package com.bangk.bangk_android_prototype.NavDrawer;
 
 import android.content.Context;
 import android.util.Log;
