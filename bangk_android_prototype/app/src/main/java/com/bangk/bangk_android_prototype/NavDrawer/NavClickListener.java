@@ -1,4 +1,4 @@
-package com.bangk.bangk_android_prototype;
+package com.bangk.bangk_android_prototype.NavDrawer;
 
 import android.content.Context;
 import android.view.View;
@@ -6,7 +6,7 @@ import android.view.View;
 /**
  * Created by craigbryan on 23/11/15.
  */
-class NavClickListener implements View.OnClickListener {
+public class NavClickListener implements View.OnClickListener {
 
     private NavClickHandler handler;
     private String action;

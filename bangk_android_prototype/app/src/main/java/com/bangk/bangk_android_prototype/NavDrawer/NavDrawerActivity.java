@@ -1,18 +1,23 @@
-package com.bangk.bangk_android_prototype;
+package com.bangk.bangk_android_prototype.NavDrawer;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 
+import com.bangk.bangk_android_prototype.NavDrawer.NavDrawerAdapter;
+import com.bangk.bangk_android_prototype.NavDrawer.NavDrawerItem;
+import com.bangk.bangk_android_prototype.R;
+
 /**
  * Created by craigbryan on 19/11/15.
  */
-public class NavDrawerActivity extends AppCompatActivity {
+public abstract class NavDrawerActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ListView drawerListView;
+
+    protected abstract void setToolbarLabel();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,8 @@ public class NavDrawerActivity extends AppCompatActivity {
         drawerListView.addHeaderView(initializeDrawerHeaderView());
         NavDrawerAdapter adapter = createListAdapter();
         drawerListView.setAdapter(adapter);
+
+        setToolbarLabel();
     }
 
     private View initializeDrawerHeaderView() {

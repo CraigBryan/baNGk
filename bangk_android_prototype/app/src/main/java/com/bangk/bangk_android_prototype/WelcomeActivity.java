@@ -1,37 +1,123 @@
 package com.bangk.bangk_android_prototype;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class WelcomeActivity extends AppCompatActivity {
+
+    private enum SigninStatus {
+        GOOD, CN_ONLY, PWD_ONLY, NEITHER
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+        View signinButton = findViewById(R.id.welcome_signin_button);
+        signinButton.setOnClickListener(new WelcomeClickListener("sign_in"));
+
+        View forgotPwdLink = findViewById(R.id.welcome_help_link);
+        forgotPwdLink.setOnClickListener(
+            new WelcomeClickListener("password_help")
+        );
+
+        View registerButton = findViewById(R.id.welcome_register_button);
+        registerButton.setOnClickListener(
+            new WelcomeClickListener("register_help")
+        );
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_welcome, menu);
-        return true;
+    private void displayHelpToast(int stringId, int length) {
+        Toast toast = Toast.makeText(
+            this, getString(stringId), length
+        );
+        toast.show();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    private void signIn() {
+        EditText cardNumInput = (EditText) findViewById(R.id.cn_input);
+        EditText passwordInput = (EditText) findViewById(R.id.pw_input);
+        String cn = cardNumInput.getText().toString();
+        String pwd = passwordInput.getText().toString();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (getSigninStatus(cn, pwd)) {
+            case GOOD:
+                goToSignedInActivity();
+                break;
+            case CN_ONLY:
+                displayHelpToast(
+                    R.string.welcome_cn_no_pwd, Toast.LENGTH_SHORT
+                );
+                passwordInput.requestFocus();
+                break;
+            case PWD_ONLY:
+                displayHelpToast(
+                    R.string.welcome_pwd_no_cn, Toast.LENGTH_SHORT
+                );
+                passwordInput.setText("");
+                cardNumInput.requestFocus();
+                break;
+            case NEITHER:
+                displayHelpToast(
+                    R.string.welcome_no_cn_no_pwd, Toast.LENGTH_SHORT);
+                cardNumInput.requestFocus();
+                break;
+        }
+    }
+
+    private SigninStatus getSigninStatus(String cardNum, String password) {
+        if (cardNum.equals("") && password.equals("")) {
+            return SigninStatus.NEITHER;
+        } else if (cardNum.equals("") && !password.equals("")) {
+            return SigninStatus.PWD_ONLY;
+        } else if (!cardNum.equals("") && password.equals("")) {
+            return SigninStatus.CN_ONLY;
+        } else {
+            return SigninStatus.GOOD;
+        }
+    }
+
+    private void goToSignedInActivity() {
+        Intent intent = new Intent(this, ViewAccountsActivity.class);
+        finish();
+        startActivity(intent);
+    }
+
+    private class WelcomeClickListener implements View.OnClickListener {
+        private String action;
+
+        private WelcomeClickListener(String action) {
+            this.action = action;
         }
 
-        return super.onOptionsItemSelected(item);
+        @Override
+        public void onClick(View v) {
+            switch(action) {
+                case "sign_in":
+                    signIn();
+                    break;
+                case "password_help":
+                    displayHelpToast(
+                        R.string.welcome_pwd_help, Toast.LENGTH_LONG
+                    );
+                    break;
+                case "register_help":
+                    displayHelpToast(
+                        R.string.welcome_signup_help, Toast.LENGTH_LONG
+                    );
+                    break;
+                default:
+                    Log.e(
+                        "baNGk ERROR",
+                        "Unknown nav drawer action done: " + action
+                    );
+            }
+        }
     }
 }

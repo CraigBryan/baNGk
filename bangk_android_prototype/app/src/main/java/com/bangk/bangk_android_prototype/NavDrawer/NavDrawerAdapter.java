@@ -1,4 +1,4 @@
-package com.bangk.bangk_android_prototype;
+package com.bangk.bangk_android_prototype.NavDrawer;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bangk.bangk_android_prototype.R;
 
 /**
  * Created by craigbryan on 19/11/15.

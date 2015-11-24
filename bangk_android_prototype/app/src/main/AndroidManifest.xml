@@ -14,13 +14,16 @@
             android:theme="@style/AppTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity
-            android:name=".NavDrawerActivity"
+            android:name=".ViewAccountsActivity"
+            android:label="View Account">
+        </activity>
+        <activity
+            android:name=".NavDrawer.NavDrawerActivity"
             android:label="BLAH">
         </activity>
     </application>
