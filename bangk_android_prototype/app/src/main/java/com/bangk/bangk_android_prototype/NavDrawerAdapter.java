@@ -33,7 +33,9 @@ public class NavDrawerAdapter extends ArrayAdapter<NavDrawerItem> {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(navItemViewId, parent, false);
-            // TODO set on click listener
+            convertView.setOnClickListener(
+                new NavClickListener(context, data.getAction())
+            );
             initializeViewHolder(viewHolder, convertView);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
