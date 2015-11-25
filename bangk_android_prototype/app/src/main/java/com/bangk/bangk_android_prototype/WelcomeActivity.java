@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.bangk.bangk_android_prototype.NavDrawer.NavDrawerActivity;
+
 public class WelcomeActivity extends AppCompatActivity {
 
     private enum SigninStatus {
@@ -84,7 +86,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void goToSignedInActivity() {
-        Intent intent = new Intent(this, ViewAccountsActivity.class);
+        Intent intent = new Intent(this, NavDrawerActivity.class);
         finish();
         startActivity(intent);
     }

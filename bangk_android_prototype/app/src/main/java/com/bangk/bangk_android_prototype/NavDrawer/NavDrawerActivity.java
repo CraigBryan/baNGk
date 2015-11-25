@@ -1,37 +1,75 @@
 package com.bangk.bangk_android_prototype.NavDrawer;
 
+import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import com.bangk.bangk_android_prototype.NavDrawer.NavDrawerAdapter;
-import com.bangk.bangk_android_prototype.NavDrawer.NavDrawerItem;
 import com.bangk.bangk_android_prototype.R;
+import com.bangk.bangk_android_prototype.ViewAccountsFragment;
 
 /**
  * Created by craigbryan on 19/11/15.
  */
-public abstract class NavDrawerActivity extends AppCompatActivity {
-    private DrawerLayout drawerLayout;
+public class NavDrawerActivity extends AppCompatActivity {
+    public static final String FRAGMENT_INTENT_STRING = "startupFragment";
     private ListView drawerListView;
-
-    protected abstract void setToolbarLabel();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawer);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerListView = (ListView) findViewById(R.id.left_drawer);
 
         drawerListView.addHeaderView(initializeDrawerHeaderView());
         NavDrawerAdapter adapter = createListAdapter();
         drawerListView.setAdapter(adapter);
 
-        setToolbarLabel();
+        int fragmentId = getIntent().getIntExtra(
+            FRAGMENT_INTENT_STRING, R.layout.view_accounts
+        );
+        loadFragment(fragmentId);
+    }
+
+    public void loadFragment(int layoutId) {
+        Fragment fragment = null;
+        String titleString = null;
+
+        Class fragmentClass;
+
+        switch(layoutId) {
+            case R.layout.view_accounts:
+                fragmentClass = ViewAccountsFragment.class;
+                titleString = getString(R.string.view_accounts_title);
+                break;
+            default:
+                Log.e("baNKg Error", "Attempted to load unknown fragment");
+                fragmentClass = ViewAccountsFragment.class;
+        }
+
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch(IllegalAccessException | InstantiationException e) {
+            Log.e("baNKg Error", "Error loading fragment");
+            Log.e("baNKg Error", e.toString());
+        }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(
+            R.id.fragment_content, fragment
+        ).commit();
+        setTitle(titleString);
+    }
+
+    private void setTitle(String title) {
+        TextView titleText = (TextView) findViewById(R.id.toolbar_title);
+        titleText.setText(title);
     }
 
     private View initializeDrawerHeaderView() {
@@ -55,7 +93,7 @@ public abstract class NavDrawerActivity extends AppCompatActivity {
     private void populateNavDrawer(NavDrawerAdapter navList) {
         // Some fake nav items
         navList.add(new NavDrawerItem(
-            "Fake Action 1", "fake1", R.mipmap.questionmark)
+            "View Accounts", "viewaccounts", R.mipmap.questionmark)
         );
         navList.add(new NavDrawerItem(
             "Fake Action 2", "fake2", R.mipmap.questionmark)

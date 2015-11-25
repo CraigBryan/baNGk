@@ -19,10 +19,6 @@
         </activity>
 
         <activity
-            android:name=".ViewAccountsActivity"
-            android:label="View Account">
-        </activity>
-        <activity
             android:name=".NavDrawer.NavDrawerActivity"
             android:label="BLAH">
         </activity>

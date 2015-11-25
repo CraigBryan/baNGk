@@ -18,4 +18,7 @@
     <dimen name="icon_margin_left">15dp</dimen>
     <dimen name="nav_label_left_margin">20dp</dimen>
     <dimen name="wheat_icon_dimen">50dp</dimen>
+
+    <!-- view accounts stuff -->
+    <dimen name="va_item_padding">10dp</dimen>
 </resources>

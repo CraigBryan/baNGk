@@ -1,6 +1,5 @@
 package com.bangk.bangk_android_prototype.NavDrawer;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +15,9 @@ import com.bangk.bangk_android_prototype.R;
 public class NavDrawerAdapter extends ArrayAdapter<NavDrawerItem> {
 
     private int navItemViewId;
-    private Context context;
+    private NavDrawerActivity context;
 
-    public NavDrawerAdapter(Context context, int resource) {
+    public NavDrawerAdapter(NavDrawerActivity context, int resource) {
         super(context, resource);
         this.navItemViewId = resource;
         this.context = context;
