@@ -57,6 +57,8 @@ public class ViewAccountsFragment extends Fragment {
             case 2: // Note faking functionality here
             case 3:
                 //TODO load new account
+                // Do this with an intent back to the nav drawer activity with
+                // the appropriate layout id
                 break;
             default:
                 Log.e(
