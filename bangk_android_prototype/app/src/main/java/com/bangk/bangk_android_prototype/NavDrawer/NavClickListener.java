@@ -1,6 +1,5 @@
 package com.bangk.bangk_android_prototype.NavDrawer;
 
-import android.content.Context;
 import android.view.View;
 
 /**
@@ -11,7 +10,7 @@ public class NavClickListener implements View.OnClickListener {
     private NavClickHandler handler;
     private String action;
 
-    public NavClickListener(Context context, String actionName) {
+    public NavClickListener(NavDrawerActivity context, String actionName) {
         handler = new NavClickHandler(context);
         action = actionName;
     }
