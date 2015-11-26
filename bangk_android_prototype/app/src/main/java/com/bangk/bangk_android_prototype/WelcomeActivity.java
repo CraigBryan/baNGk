@@ -87,6 +87,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void goToSignedInActivity() {
         Intent intent = new Intent(this, NavDrawerActivity.class);
+        intent.putExtra(
+            NavDrawerActivity.FRAGMENT_TITLE_STRING,
+            getResources().getString(R.string.view_accounts_title)
+        );
         finish();
         startActivity(intent);
     }

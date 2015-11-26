@@ -21,4 +21,10 @@
 
     <!-- view accounts stuff -->
     <dimen name="va_item_padding">10dp</dimen>
+    <dimen name="ad_header_margin">20dp</dimen>
+    <dimen name="ad_trans_list_side_margin">20dp</dimen>
+    <dimen name="ad_trans_list_top_margin">10dp</dimen>
+    <dimen name="tli_padding">10dp</dimen>
+    <dimen name="tli_padding_sides">5dp</dimen>
+    <dimen name="tli_padding_top_bot">15dp</dimen>
 </resources>

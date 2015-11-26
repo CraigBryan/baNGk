@@ -1,6 +1,5 @@
 package com.bangk.bangk_android_prototype.NavDrawer;
 
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
@@ -10,6 +9,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bangk.bangk_android_prototype.AccountDetailFragment;
 import com.bangk.bangk_android_prototype.R;
 import com.bangk.bangk_android_prototype.ViewAccountsFragment;
 
@@ -18,6 +18,7 @@ import com.bangk.bangk_android_prototype.ViewAccountsFragment;
  */
 public class NavDrawerActivity extends AppCompatActivity {
     public static final String FRAGMENT_INTENT_STRING = "startupFragment";
+    public static final String FRAGMENT_TITLE_STRING = "fragmentTitle";
     private ListView drawerListView;
 
     @Override
@@ -39,14 +40,28 @@ public class NavDrawerActivity extends AppCompatActivity {
 
     public void loadFragment(int layoutId) {
         Fragment fragment = null;
-        String titleString = null;
-
         Class fragmentClass;
+
+        String titleString = getIntent().getStringExtra(FRAGMENT_TITLE_STRING);
+        Bundle fragmentArgs = new Bundle();
 
         switch(layoutId) {
             case R.layout.view_accounts:
                 fragmentClass = ViewAccountsFragment.class;
-                titleString = getString(R.string.view_accounts_title);
+                break;
+            case R.layout.view_account_detail:
+                fragmentClass = AccountDetailFragment.class;
+                fragmentArgs.putString(
+                    AccountDetailFragment.ACCOUNT_NUMBER_KEY,
+                    "#123-5423-45235232"
+                );
+                fragmentArgs.putString(
+                    AccountDetailFragment.ACCOUNT_TYPE_KEY,
+                    "Chequing Account"
+                );
+                fragmentArgs.putFloat(
+                    AccountDetailFragment.ACCOUNT_BALANCE_KEY, 450.23f
+                );
                 break;
             default:
                 Log.e("baNKg Error", "Attempted to load unknown fragment");
@@ -55,6 +70,7 @@ public class NavDrawerActivity extends AppCompatActivity {
 
         try {
             fragment = (Fragment) fragmentClass.newInstance();
+            fragment.setArguments(fragmentArgs);
         } catch(IllegalAccessException | InstantiationException e) {
             Log.e("baNKg Error", "Error loading fragment");
             Log.e("baNKg Error", e.toString());
