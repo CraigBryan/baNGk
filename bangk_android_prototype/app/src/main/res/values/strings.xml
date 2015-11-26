@@ -19,6 +19,11 @@
     <string name="welcome_pwd_no_cn">Please enter a card number.</string>
     <string name="welcome_cn_no_pwd">Please enter a password.</string>
     <string name="welcome_no_cn_no_pwd">Please enter a card number and password to sign in.</string>
+
+    <!-- View accounts strings -->
     <string name="view_accounts_title">Your Accounts</string>
+
+    <!-- Account details strings -->
+    <string name="ad_transaction_title">Recent Transactions</string>
 
 </resources>

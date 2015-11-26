@@ -1,6 +1,7 @@
 package com.bangk.bangk_android_prototype;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import com.bangk.bangk_android_prototype.NavDrawer.NavDrawerActivity;
 
 /**
  * Created by craigbryan on 24/11/15.
@@ -57,8 +60,17 @@ public class ViewAccountsFragment extends Fragment {
             case 2: // Note faking functionality here
             case 3:
                 //TODO load new account
-                // Do this with an intent back to the nav drawer activity with
-                // the appropriate layout id
+                Intent intent = new Intent(context, NavDrawerActivity.class);
+                intent.putExtra(
+                    NavDrawerActivity.FRAGMENT_INTENT_STRING,
+                    R.layout.view_account_detail
+                );
+                intent.putExtra(
+                    NavDrawerActivity.FRAGMENT_TITLE_STRING,
+                    "Everyday Account"
+                );
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
                 break;
             default:
                 Log.e(
