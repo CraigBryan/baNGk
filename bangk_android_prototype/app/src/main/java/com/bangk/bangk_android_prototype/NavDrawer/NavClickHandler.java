@@ -21,6 +21,9 @@ public class NavClickHandler {
             case "viewaccounts":
                 context.loadFragment(R.layout.view_accounts);
                 break;
+            case "transfer":
+                context.loadFragment(R.layout.bank_transfer);
+                break;
             case "signout":
                 Intent intent = new Intent(context, WelcomeActivity.class);
                 context.finish();

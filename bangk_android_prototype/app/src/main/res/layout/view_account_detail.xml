@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:text="@string/ad_transaction_title"
         android:id="@+id/ad_transaction_title"
-        android:layout_marginLeft="@dimen/ad_header_margin"/>
+        android:layout_gravity="center_horizontal"/>
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"

@@ -27,4 +27,11 @@
     <dimen name="tli_padding">10dp</dimen>
     <dimen name="tli_padding_sides">5dp</dimen>
     <dimen name="tli_padding_top_bot">15dp</dimen>
+
+    <!-- transfers stuff -->
+    <dimen name="transfer_layout_padding">10dp</dimen>
+    <dimen name="transfer_rb_padding">20dp</dimen>
+    <dimen name="tranfer_confirm_container_padding">35dp</dimen>
+    <dimen name="transfer_spinner_padding">5dp</dimen>
+    <dimen name="transfer_after_section_margin">20dp</dimen>
 </resources>

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bangk.bangk_android_prototype.AccountDetailFragment;
 import com.bangk.bangk_android_prototype.R;
+import com.bangk.bangk_android_prototype.TransferFragment;
 import com.bangk.bangk_android_prototype.ViewAccountsFragment;
 
 /**
@@ -47,6 +48,9 @@ public class NavDrawerActivity extends AppCompatActivity {
 
         switch(layoutId) {
             case R.layout.view_accounts:
+                if (titleString == null) {
+                    titleString = "Your Accounts";
+                }
                 fragmentClass = ViewAccountsFragment.class;
                 break;
             case R.layout.view_account_detail:
@@ -62,6 +66,12 @@ public class NavDrawerActivity extends AppCompatActivity {
                 fragmentArgs.putFloat(
                     AccountDetailFragment.ACCOUNT_BALANCE_KEY, 450.23f
                 );
+                break;
+            case R.layout.bank_transfer:
+                if (titleString == null) {
+                    titleString = "Make a Transfer";
+                }
+                fragmentClass = TransferFragment.class;
                 break;
             default:
                 Log.e("baNKg Error", "Attempted to load unknown fragment");
@@ -112,7 +122,7 @@ public class NavDrawerActivity extends AppCompatActivity {
             "View Accounts", "viewaccounts", R.mipmap.questionmark)
         );
         navList.add(new NavDrawerItem(
-            "Fake Action 2", "fake2", R.mipmap.questionmark)
+            "Make a Transfer", "transfer", R.mipmap.questionmark)
         );
         navList.add(new NavDrawerItem(
             "Fake Action 3", "fake3", R.mipmap.questionmark)
