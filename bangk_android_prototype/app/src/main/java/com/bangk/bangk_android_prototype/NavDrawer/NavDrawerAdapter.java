@@ -1,5 +1,6 @@
 package com.bangk.bangk_android_prototype.NavDrawer;
 
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +17,15 @@ public class NavDrawerAdapter extends ArrayAdapter<NavDrawerItem> {
 
     private int navItemViewId;
     private NavDrawerActivity context;
+    private DrawerLayout drawer;
 
-    public NavDrawerAdapter(NavDrawerActivity context, int resource) {
+    public NavDrawerAdapter(
+        NavDrawerActivity context, int resource, DrawerLayout drawer
+    ) {
         super(context, resource);
         this.navItemViewId = resource;
         this.context = context;
+        this.drawer = drawer;
     }
 
     @Override
@@ -35,7 +40,7 @@ public class NavDrawerAdapter extends ArrayAdapter<NavDrawerItem> {
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(navItemViewId, parent, false);
             convertView.setOnClickListener(
-                new NavClickListener(context, data.getAction())
+                new NavClickListener(context, data.getAction(), drawer)
             );
             initializeViewHolder(viewHolder, convertView);
         } else {

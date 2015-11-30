@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/transfer_layout_padding"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/transfer_from_title_text"
+            android:id="@+id/transfer_from_title"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/transfers_from_acct_spinner"
+            android:layout_marginBottom="@dimen/transfer_after_section_margin"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/transfer_acct_type_container"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/transfer_after_section_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/transfer_acct_type_title_text"
+                android:id="@+id/transfer_account_type_title_"/>
+
+            <RadioGroup
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/transfers_acct_chooser"
+                android:paddingLeft="@dimen/transfer_rb_padding">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/transfer_your_account_rb_text"
+                    android:id="@+id/rb_your_acct"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="left"
+                    android:layout_marginRight="20dp"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rb_ext_acct"
+                    android:text="@string/transfer_other_acct_rb_text"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="right"
+                    />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/transfer_your_account_container"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/transfer_after_section_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/transfer_to_acct_title_text"
+                android:id="@+id/transfer_your_acct_title"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/transfer_to_own_acct_spinner"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/transfer_ext_account_container"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/transfer_after_section_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/transfer_external_acct_title_text"
+                android:id="@+id/textView3"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/transfer_to_ext_acct_spinner"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Payee"
+                android:id="@+id/transfer_add_payee_button"
+                android:layout_gravity="center_horizontal"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/transfer_amt_container"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/transfer_after_section_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/transfers_amt_label_text"
+                android:layout_alignParentStart="true"
+                android:id="@+id/transfers_amt_label"
+                android:layout_marginTop="5dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/transfers_amt_editable"
+                android:layout_toRightOf="@+id/transfers_amt_label"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/confirm_container"
+            android:paddingLeft="@dimen/tranfer_confirm_container_padding"
+            android:paddingRight="@dimen/tranfer_confirm_container_padding"
+            android:visibility="gone">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transfer_cancel_button_text"
+                android:id="@+id/transfer_cancel_button"
+                android:layout_alignParentStart="true"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transfer_confirm_button_text"
+                android:id="@+id/transfer_confirm_button"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Other Transfer Services"
+            android:id="@+id/textView7"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/transfer_etransfer_text"
+            android:id="@+id/textView5"
+            android:layout_alignParentStart="true"
+            android:textColor="#0a1ef8"
+            android:layout_below="@+id/textView7"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/transfer_wu_text"
+            android:id="@+id/textView6"
+            android:layout_alignParentEnd="true"
+            android:textColor="#0a1ef8"
+            android:layout_below="@+id/textView7"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

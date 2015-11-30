@@ -26,4 +26,18 @@
     <!-- Account details strings -->
     <string name="ad_transaction_title">Recent Transactions</string>
 
+    <!-- Transfer View strings -->
+    <string name="transfer_from_title_text">From Account:</string>
+    <string name="transfer_acct_type_title_text">Transfer to where?</string>
+    <string name="transfer_to_acct_title_text">To Account:</string>
+    <string name="transfer_your_account_rb_text">Your Accounts</string>
+    <string name="transfer_other_acct_rb_text">External Account</string>
+    <string name="transfer_external_acct_title_text">To External Account:</string>
+    <string name="transfer_cancel_button_text">Cancel</string>
+    <string name="transfer_confirm_button_text">Confirm</string>
+    <string name="transfers_amt_label_text">Amount:</string>
+    <string name="transfer_etransfer_text"><u>Interact E-Transfer</u></string>
+    <string name="transfer_wu_text"><u>Western Union Money Transfer</u></string>
+    <string name="title_activity_maps">Map</string>
+
 </resources>
