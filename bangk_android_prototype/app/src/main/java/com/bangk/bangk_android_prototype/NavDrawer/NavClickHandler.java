@@ -3,6 +3,8 @@ package com.bangk.bangk_android_prototype.NavDrawer;
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.bangk.bangk_android_prototype.R;
 import com.bangk.bangk_android_prototype.WelcomeActivity;
 
@@ -21,6 +23,9 @@ public class NavClickHandler {
 
     public void doNavAction(String action) {
         switch(action) {
+            case "viewprofile":
+                // TODO load profile view
+                break;
             case "viewaccounts":
                 context.loadFragment(R.layout.view_accounts);
                 break;
@@ -35,6 +40,11 @@ public class NavClickHandler {
             case "map":
                 context.loadFragment(R.layout.view_map);
                 break;
+            case "unimplemented":
+                Toast.makeText(
+                    context, "Feature Unimplemented", Toast.LENGTH_SHORT
+                ).show();
+                return;
             default:
                 Log.e(
                     "baNGk ERROR", "Unknown nav drawer action done: " + action

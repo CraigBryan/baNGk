@@ -124,17 +124,42 @@ public class NavDrawerActivity extends AppCompatActivity {
     }
 
     private void populateNavDrawer(NavDrawerAdapter navList) {
-        // Some fake nav items
+        // Nav items, titles, adn icon definitions
         navList.add(new NavDrawerItem(
-            "View Accounts", "viewaccounts", R.mipmap.questionmark)
-        );
+            "Personal Information",
+            "viewprofile",
+            R.mipmap.ic_face_black_24dp
+        ));
         navList.add(new NavDrawerItem(
-            "Make a Transfer", "transfer", R.mipmap.questionmark)
-        );
+            "View Accounts",
+            "viewaccounts",
+            R.mipmap.ic_credit_card_black_24dp
+        ));
         navList.add(new NavDrawerItem(
-            "Find a nearby branch", "map", R.mipmap.questionmark)
-        );
-        // Sign out
+            "Make a Transfer",
+            "transfer",
+            R.mipmap.ic_compare_arrows_black_24dp
+        ));
+
+        // Unimplemented action
+        navList.add(new NavDrawerItem(
+            "Interac e-Transfer",
+            "unimplemented",
+            R.mipmap.ic_settings_ethernet_black_24dp
+        ));
+        // Unimplemented action
+        navList.add(new NavDrawerItem(
+            "Western Union Transfer",
+            "unimplemented",
+            R.mipmap.ic_account_balance_black_24dp
+        ));
+
+        navList.add(new NavDrawerItem(
+            "Find a nearby branch",
+            "map",
+            R.mipmap.ic_room_black_24dp
+        ));
+        // Sign out (always last)
         navList.add(
             new NavDrawerItem("Sign Out", "signout", R.mipmap.logout)
         );
