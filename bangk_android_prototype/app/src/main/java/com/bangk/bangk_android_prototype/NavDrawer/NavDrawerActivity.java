@@ -3,6 +3,7 @@ package com.bangk.bangk_android_prototype.NavDrawer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bangk.bangk_android_prototype.AccountDetailFragment;
+import com.bangk.bangk_android_prototype.MapFragment;
 import com.bangk.bangk_android_prototype.R;
 import com.bangk.bangk_android_prototype.TransferFragment;
 import com.bangk.bangk_android_prototype.ViewAccountsFragment;
@@ -20,6 +22,7 @@ import com.bangk.bangk_android_prototype.ViewAccountsFragment;
 public class NavDrawerActivity extends AppCompatActivity {
     public static final String FRAGMENT_INTENT_STRING = "startupFragment";
     public static final String FRAGMENT_TITLE_STRING = "fragmentTitle";
+
     private ListView drawerListView;
 
     @Override
@@ -30,7 +33,9 @@ public class NavDrawerActivity extends AppCompatActivity {
         drawerListView = (ListView) findViewById(R.id.left_drawer);
 
         drawerListView.addHeaderView(initializeDrawerHeaderView());
-        NavDrawerAdapter adapter = createListAdapter();
+        NavDrawerAdapter adapter = createListAdapter(
+            (DrawerLayout) findViewById(R.id.drawer_layout)
+        );
         drawerListView.setAdapter(adapter);
 
         int fragmentId = getIntent().getIntExtra(
@@ -68,10 +73,12 @@ public class NavDrawerActivity extends AppCompatActivity {
                 );
                 break;
             case R.layout.bank_transfer:
-                if (titleString == null) {
-                    titleString = "Make a Transfer";
-                }
+                titleString = "Make a Transfer";
                 fragmentClass = TransferFragment.class;
+                break;
+            case R.layout.view_map:
+                titleString = "Nearby Branches and ATMs";
+                fragmentClass = MapFragment.class;
                 break;
             default:
                 Log.e("baNKg Error", "Attempted to load unknown fragment");
@@ -106,9 +113,9 @@ public class NavDrawerActivity extends AppCompatActivity {
         return drawerHeader;
     }
 
-    private NavDrawerAdapter createListAdapter() {
+    private NavDrawerAdapter createListAdapter(DrawerLayout drawer) {
         NavDrawerAdapter adapter = new NavDrawerAdapter(
-            this, R.layout.drawer_list_item
+            this, R.layout.drawer_list_item, drawer
         );
 
         populateNavDrawer(adapter);
@@ -125,7 +132,7 @@ public class NavDrawerActivity extends AppCompatActivity {
             "Make a Transfer", "transfer", R.mipmap.questionmark)
         );
         navList.add(new NavDrawerItem(
-            "Fake Action 3", "fake3", R.mipmap.questionmark)
+            "Find a nearby branch", "map", R.mipmap.questionmark)
         );
         // Sign out
         navList.add(

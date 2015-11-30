@@ -109,6 +109,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/transfer_to_ext_acct_spinner"/>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Payee"
+                android:id="@+id/transfer_add_payee_button"
+                android:layout_gravity="center_horizontal"
+                />
+
         </LinearLayout>
 
         <RelativeLayout

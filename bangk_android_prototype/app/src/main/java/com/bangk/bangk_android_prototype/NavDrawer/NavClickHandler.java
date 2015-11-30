@@ -1,6 +1,7 @@
 package com.bangk.bangk_android_prototype.NavDrawer;
 
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import com.bangk.bangk_android_prototype.R;
 import com.bangk.bangk_android_prototype.WelcomeActivity;
@@ -11,9 +12,11 @@ import com.bangk.bangk_android_prototype.WelcomeActivity;
 public class NavClickHandler {
 
     private NavDrawerActivity context;
+    private DrawerLayout drawer;
 
-    public NavClickHandler(NavDrawerActivity context) {
+    public NavClickHandler(NavDrawerActivity context, DrawerLayout drawer) {
         this.context = context;
+        this.drawer = drawer;
     }
 
     public void doNavAction(String action) {
@@ -29,10 +32,15 @@ public class NavClickHandler {
                 context.finish();
                 context.startActivity(intent);
                 break;
+            case "map":
+                context.loadFragment(R.layout.view_map);
+                break;
             default:
                 Log.e(
                     "baNGk ERROR", "Unknown nav drawer action done: " + action
                 );
+                return;
         }
+        drawer.closeDrawers();
     }
 }

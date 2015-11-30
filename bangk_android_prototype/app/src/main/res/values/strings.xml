@@ -38,5 +38,6 @@
     <string name="transfers_amt_label_text">Amount:</string>
     <string name="transfer_etransfer_text"><u>Interact E-Transfer</u></string>
     <string name="transfer_wu_text"><u>Western Union Money Transfer</u></string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
