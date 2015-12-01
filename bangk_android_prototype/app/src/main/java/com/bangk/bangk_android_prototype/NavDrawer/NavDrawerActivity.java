@@ -17,14 +17,23 @@ import com.bangk.bangk_android_prototype.TransferFragment;
 import com.bangk.bangk_android_prototype.ViewAccountsFragment;
 
 /**
- * Created by craigbryan on 19/11/15.
+ * The main view container for the logged-in portion of the application.
+ * Contains the logic for the nav drawer and the ability to route to various
+ * fragments for the actual main screen activity.
  */
 public class NavDrawerActivity extends AppCompatActivity {
     public static final String FRAGMENT_INTENT_STRING = "startupFragment";
     public static final String FRAGMENT_TITLE_STRING = "fragmentTitle";
 
+    // The list view that makes up the set of menu elements in the nav drawer
     private ListView drawerListView;
 
+    /**
+     * Loads the layout for the nav drawer and initializes the adapter, data,
+     * and event handling for the nav drawer. Calls load fragment to load the
+     * main content of the screen.
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +53,12 @@ public class NavDrawerActivity extends AppCompatActivity {
         loadFragment(fragmentId);
     }
 
+    /**
+     * Loads a fragment based on a layout id. Displays the title of the feature
+     * being displayed and loads the fragment associated with the feature.
+     * @param layoutId - ID associated with the layout to be loaded in the
+     *                 fragment
+     */
     public void loadFragment(int layoutId) {
         Fragment fragment = null;
         Class fragmentClass;

@@ -11,12 +11,17 @@ import android.widget.TextView;
 import com.bangk.bangk_android_prototype.R;
 
 /**
- * Created by craigbryan on 19/11/15.
+ * The adapter that handles the list data in the nav drawer
  */
 public class NavDrawerAdapter extends ArrayAdapter<NavDrawerItem> {
 
+    // the id of the layout that is populated by data by this adapter
     private int navItemViewId;
+
+    // The context this adapter exists in
     private NavDrawerActivity context;
+
+    // The nav drawer layout container
     private DrawerLayout drawer;
 
     public NavDrawerAdapter(
@@ -28,6 +33,13 @@ public class NavDrawerAdapter extends ArrayAdapter<NavDrawerItem> {
         this.drawer = drawer;
     }
 
+    /**
+     * Builds a view that displays the data at a given position in the list
+     * @param position - the position of the data being displayed
+     * @param convertView - the view that is being populated and displayed
+     * @param parent - the view that holds the views in the list
+     * @return the view to display the data in
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
@@ -64,6 +76,7 @@ public class NavDrawerAdapter extends ArrayAdapter<NavDrawerItem> {
         vh.icon.setImageResource(ndi.getIconResource());
     }
 
+    // Caching data container to speed up layout inflating
     private static class ViewHolder {
         TextView itemLabel;
         ImageView icon;

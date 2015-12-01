@@ -7,10 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by craigbryan on 30/11/15.
+ * Standard fragment to allow loading of the map fragment in the same way other
+ * fragments are loaded. Just wraps the loading of the Google map fragment.
  */
 public class MapFragment extends Fragment {
 
+    /**
+     * Loads and initializes the view for the map view.
+     * @param inflater - inflater to create views associated with the underlying
+     *                 activity
+     * @param container - the parent view that holds the views being loaded
+     * @param savedInstanceState - data that allows the program to contain
+     *                           state to allow it to be reloaded on app resume
+     * @return the View to be displayed by the underlying Activity
+     */
     @Override
     public View onCreateView(
         LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState

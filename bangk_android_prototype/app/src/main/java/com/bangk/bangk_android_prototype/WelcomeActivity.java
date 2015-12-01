@@ -10,12 +10,22 @@ import android.widget.Toast;
 
 import com.bangk.bangk_android_prototype.NavDrawer.NavDrawerActivity;
 
+/**
+ * The signin/splash screen activity
+ */
 public class WelcomeActivity extends AppCompatActivity {
 
+    // Enum for the various states of the sign-in
     private enum SigninStatus {
         GOOD, CN_ONLY, PWD_ONLY, NEITHER
     }
 
+    /**
+     * Called when this activity is instantiated. Initalizes the various views
+     * and blick handlers.
+     * @param savedInstanceState the saved state of this activity, to
+     *                           allow resuming
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +105,9 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Click handler for the various inputs on the sign-in page
+     */
     private class WelcomeClickListener implements View.OnClickListener {
         private String action;
 
@@ -102,6 +115,10 @@ public class WelcomeActivity extends AppCompatActivity {
             this.action = action;
         }
 
+        /**
+         * Called on a click event
+         * @param v - the view that was clicked
+         */
         @Override
         public void onClick(View v) {
             switch(action) {

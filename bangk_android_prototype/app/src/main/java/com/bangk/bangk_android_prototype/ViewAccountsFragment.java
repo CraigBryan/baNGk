@@ -13,12 +13,22 @@ import android.widget.ListView;
 import com.bangk.bangk_android_prototype.NavDrawer.NavDrawerActivity;
 
 /**
- * Created by craigbryan on 24/11/15.
+ * The fragment associated with the view accounts activity.
  */
 public class ViewAccountsFragment extends Fragment {
 
+    // The context this fragment exists in
     private Context context;
 
+    /**
+     * Loads and initializes the view for the view accounts activity
+     * @param inflater - inflater to create views associated with the underlying
+     *                 activity
+     * @param container - the parent view that holds the views being loaded
+     * @param savedInstanceState - data that allows the program to contain
+     *                           state to allow it to be reloaded on app resume
+     * @return the View to be displayed by the underlying Activity
+     */
     @Override
     public View onCreateView(
         LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
@@ -49,7 +59,6 @@ public class ViewAccountsFragment extends Fragment {
             3, "TFSA Account", "#142-6263-845626", "Tax Free Savings",
             4305.01f
         ));
-        // TODO add accounts here
 
         return adapter;
     }
@@ -59,7 +68,6 @@ public class ViewAccountsFragment extends Fragment {
             case 1: // Note faking functionality here
             case 2: // Note faking functionality here
             case 3:
-                //TODO load new account
                 Intent intent = new Intent(context, NavDrawerActivity.class);
                 intent.putExtra(
                     NavDrawerActivity.FRAGMENT_INTENT_STRING,
@@ -80,6 +88,9 @@ public class ViewAccountsFragment extends Fragment {
         }
     }
 
+    /**
+     * Data model and click handler for accounts in the account list
+     */
     public class AccountListItem implements View.OnClickListener {
         private int uniqueId;
         private String accountName;
@@ -114,6 +125,7 @@ public class ViewAccountsFragment extends Fragment {
             return accountBalance;
         }
 
+        // Delegates clicks events to the fragment, with the id of the account
         @Override
         public void onClick(View v) {
             doAction(uniqueId);

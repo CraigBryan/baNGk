@@ -19,24 +19,42 @@ import android.widget.Toast;
 import com.bangk.bangk_android_prototype.NavDrawer.NavDrawerActivity;
 
 /**
- * Created by craigbryan on 28/11/15.
+ * The fragment associated with the bank transfer activity.
  */
 public class TransferFragment
     extends Fragment
     implements View.OnClickListener
 {
+    // There are several spinners on this view, and they are handled the same
+    // way. This enum is used to identify the different spinners
     private enum SpinnerId {
         FROM_ACCOUNTS, YOUR_ACCOUNTS, EXT_ACCOUNTS
     }
 
+    // The context this fragment is running within
     private Context context;
+
+    // The main view of this fragment
     private View layout;
+
+    // Three spinner adapters for the three spinners in this fragment view
     private CustomSpinnerAdapter fromAcctAdapter;
     private CustomSpinnerAdapter toOwnAcctAdapter;
     private CustomSpinnerAdapter toExtAcctAdapter;
+
+    // Variables used for feedback to the user after a transaction is done
     private String fromAccount, toAccount;
     private Float amount;
 
+    /**
+     * Loads and initializes the view for the transfer view
+     * @param inflater - inflater to create views associated with the underlying
+     *                 activity
+     * @param container - the parent view that holds the views being loaded
+     * @param savedInstanceState - data that allows the program to contain
+     *                           state to allow it to be reloaded on app resume
+     * @return the View to be displayed by the underlying Activity
+     */
     @Override
     public View onCreateView(
         LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
@@ -52,12 +70,15 @@ public class TransferFragment
         return layout;
     }
 
+    /**
+     * Handles the clicking on the confirm or cancel buttons
+     * @param v the view that was clicked on
+     */
     @Override
     public void onClick(View v) {
         Intent intent;
         switch(v.getId()) {
             case R.id.transfer_cancel_button:
-                // TODO display toast and go back to the view accounts activity
                 Toast.makeText(
                     context, "Transfer cancelled", Toast.LENGTH_LONG
                 ).show();

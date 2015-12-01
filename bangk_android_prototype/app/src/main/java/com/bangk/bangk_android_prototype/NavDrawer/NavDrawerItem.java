@@ -1,7 +1,7 @@
 package com.bangk.bangk_android_prototype.NavDrawer;
 
 /**
- * Created by craigbryan on 19/11/15.
+ * Data model for the items in the nav drawer.
  */
 public class NavDrawerItem {
 

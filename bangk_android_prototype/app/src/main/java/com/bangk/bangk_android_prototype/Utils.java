@@ -5,10 +5,16 @@ import android.support.v4.content.ContextCompat;
 import android.widget.TextView;
 
 /**
- * Created by craigbryan on 25/11/15.
+ * Utilities functions
  */
 public class Utils {
 
+    /**
+     * Populates a textview with a currency string.
+     * @param context The context the textview exists in
+     * @param view the textview being populated
+     * @param value the currency amount being put in the textview
+     */
     public static void setColouredMoneyText(
         Context context, TextView view, float value
     ) {
