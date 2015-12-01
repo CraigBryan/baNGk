@@ -8,12 +8,16 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 /**
- * Created by craigbryan on 25/11/15.
+ * The custom adapter that manages the data displayed in the list of
+ * transactions.
  */
 public class TransactionListAdapter extends
     ArrayAdapter<AccountDetailFragment.TransactionListItem>
 {
+    // The context this adapter is operating under
     private Context context;
+
+    // The resource id of the view displayed in the list
     private int resourceId;
 
     public TransactionListAdapter(Context context, int resource) {
@@ -22,6 +26,13 @@ public class TransactionListAdapter extends
         this.resourceId = resource;
     }
 
+    /**
+     * Builds a view that displays the data at a given position in the list
+     * @param position - the position of the data being displayed
+     * @param convertView - the view that is being populated and displayed
+     * @param parent - the view that holds the views in the list
+     * @return the view to display the data in
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
@@ -60,6 +71,7 @@ public class TransactionListAdapter extends
         Utils.setColouredMoneyText(context, vh.amount, tli.getValue());
     }
 
+    // Caching data container to speed up layout inflating.
     private static class ViewHolder {
         TextView date;
         TextView number;

@@ -10,10 +10,15 @@ import com.bangk.bangk_android_prototype.WelcomeActivity;
 
 /**
  * Created by craigbryan on 23/11/15.
+ *
+ * Handles click/touch events on the nav drawer menu.
  */
 public class NavClickHandler {
 
+    // The context this click handler exists in
     private NavDrawerActivity context;
+
+    // The drawer view that the click handler is acting on
     private DrawerLayout drawer;
 
     public NavClickHandler(NavDrawerActivity context, DrawerLayout drawer) {
@@ -21,6 +26,10 @@ public class NavClickHandler {
         this.drawer = drawer;
     }
 
+    /**
+     * Routes the nav drawer action to a fragment or activity.
+     * @param action the string representing the nav button pressed
+     */
     public void doNavAction(String action) {
         switch(action) {
             case "viewprofile":
@@ -51,6 +60,8 @@ public class NavClickHandler {
                 );
                 return;
         }
+
+        // Animates the drawer closing, after all valid nav actions
         drawer.closeDrawers();
     }
 }

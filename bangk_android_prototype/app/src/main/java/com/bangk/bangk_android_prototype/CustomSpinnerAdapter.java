@@ -8,12 +8,17 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 /**
- * Created by craigbryan on 28/11/15.
+ * Adapter for an Android spinner that allows a custom view to be populated
+ * within the spinner. Specifically it displays the top-level, non-dropdown as
+ * a single line, and the dropdown items as two lines.
  */
 public class CustomSpinnerAdapter
     extends ArrayAdapter<TransferFragment.SpinnerItem>
 {
+    // The context this adapter exists in
     private Context context;
+
+    // The id of the layout that this adapter populates
     private int resourceId;
 
     public CustomSpinnerAdapter(Context context, int resource) {
@@ -22,6 +27,13 @@ public class CustomSpinnerAdapter
         this.resourceId = resource;
     }
 
+    /**
+     * Loads the view for the non-dropdown item.
+     * @param position - the position of the data in the adapter
+     * @param convertView - the view associated with this data
+     * @param parent - the spinner view that holds these items
+     * @return the view to be displayed
+     */
     @Override
     public View getDropDownView(
         int position, View convertView, ViewGroup parent
@@ -29,6 +41,13 @@ public class CustomSpinnerAdapter
         return getCustomSpinnerView(position, convertView, parent, false);
     }
 
+    /**
+     * Loads the view for the dropdown items.
+     * @param position - the position of the data in the adapter
+     * @param convertView - the view associated with this data
+     * @param parent - the spinner view that holds these items
+     * @return the view to be displayed
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         return getCustomSpinnerView(position, convertView, parent, true);
@@ -74,6 +93,7 @@ public class CustomSpinnerAdapter
         }
     }
 
+    // Caching data container to speed up layout inflating.
     private static class ViewHolder {
         TextView mainText;
         TextView subText;

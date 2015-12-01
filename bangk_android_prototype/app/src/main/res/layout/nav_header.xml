@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="WIP"
+        android:text="Craig Bryan"
         android:id="@+id/textView"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"/>
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="smaller wip"
+        android:text="8543 3426 1235 6932"
         android:id="@+id/textView2"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"

@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 /**
- * Created by craigbryan on 25/11/15.
+ * View that displays a specific account's data and list of transactions.
  */
 public class AccountDetailFragment extends Fragment {
 
@@ -18,8 +18,18 @@ public class AccountDetailFragment extends Fragment {
     public static final String ACCOUNT_TYPE_KEY = "acctType";
     public static final String ACCOUNT_BALANCE_KEY = "acctBal";
 
+    // The context this fragment exists in
     private Context context;
 
+    /**
+     * Loads and initializes the view for the account detail view.
+     * @param inflater - inflater to create views associated with the underlying
+     *                 activity
+     * @param container - the parent view that holds the views being loaded
+     * @param savedInstanceState - data that allows the program to contain
+     *                           state to allow it to be reloaded on app resume
+     * @return the View to be displayed by the underlying Activity
+     */
     @Override
     public View onCreateView(
         LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
@@ -33,7 +43,6 @@ public class AccountDetailFragment extends Fragment {
 
         return layout;
     }
-
     private void populateLayout(View layout) {
         TextView acctNum = (TextView) layout.findViewById(R.id.ad_acct_num);
         TextView acctType = (TextView) layout.findViewById(R.id.ad_acct_type);
@@ -59,12 +68,12 @@ public class AccountDetailFragment extends Fragment {
         transactionList.setAdapter(adapter);
     }
 
+    // Loads the data in the transaction list.
     private TransactionListAdapter initAdapter() {
         TransactionListAdapter adapter = new TransactionListAdapter(
             context, R.layout.transaction_list_item
         );
 
-        // TODO add transactions here (In a good date-time order)
         adapter.add(new TransactionListItem(
             "8:15 AM Dec 2, 2015", "#785", -45.23f, "Mac Gas Bar Richmond"
         ));
@@ -92,6 +101,9 @@ public class AccountDetailFragment extends Fragment {
         return adapter;
     }
 
+    /**
+     * The data model for items in the transaction list.
+     */
     public class TransactionListItem {
         private String date;
         private String num;

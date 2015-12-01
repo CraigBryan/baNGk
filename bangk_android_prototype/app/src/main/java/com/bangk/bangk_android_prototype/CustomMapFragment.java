@@ -11,10 +11,16 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
- * Created by craigbryan on 30/11/15.
+ * Wrapper fragment for loading a Google Maps View. Currently mocks the location
+ * loading to a fixed location and shows no results on the map.
  */
 public class CustomMapFragment extends SupportMapFragment {
 
+    /**
+     * Called when this fragment is initialized. Loads elements on the map.
+     * @param savedInstanceState - data that allows the program to contain
+     *                           state to allow it to be reloaded
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

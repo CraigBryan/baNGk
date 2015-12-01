@@ -8,12 +8,15 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 /**
- * Created by craigbryan on 24/11/15.
+ * The adapter that handles the list data in the view account activity
  */
 public class ViewAccountAdapter extends
     ArrayAdapter<ViewAccountsFragment.AccountListItem>
 {
+    // The context this adapter exists in
     private Context context;
+
+    // The layout the adapter renders the data in
     private int resourceId;
 
     public ViewAccountAdapter(Context context, int resource) {
@@ -22,6 +25,13 @@ public class ViewAccountAdapter extends
         this.resourceId = resource;
     }
 
+    /**
+     * Builds a view that displays the data at a given position in the list
+     * @param position - the position of the data being displayed
+     * @param convertView - the view that is being populated and displayed
+     * @param parent - the view that holds the views in the list
+     * @return the view to display the data in
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
@@ -64,6 +74,7 @@ public class ViewAccountAdapter extends
         );
     }
 
+    // Caching data container to speed up layout inflating
     private static class ViewHolder {
         TextView accountName;
         TextView accountNum;
