@@ -20,7 +20,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/welcome_title_text"
         android:id="@+id/welcome_title"
-        />
+        android:layout_marginBottom="10dp"/>
 
     <ImageView
         android:layout_width="150dp"
